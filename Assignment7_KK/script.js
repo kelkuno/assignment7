@@ -26,18 +26,35 @@ var sideNav = document.getElementById('SideNav');
 var addHeadline = document.createElement('h3');
 var executeHeadline = sideNav.appendChild(addHeadline);
 var willYouDonate = "";
+var allArticles = document.getElementsByTagName("article");
+
+function redHeadline() {
+  for(i=0; i<allArticles.length; i++) {
+    allArticles[i].classList.add("generous-donation");
+  }
+}
+function noRedHeadline() {
+  for(i=0; i<allArticles.length; i++) {
+    allArticles[i].classList.remove("generous-donation");
+  }
+}
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
   willYouDonate = window.prompt('How much would you like to donate?');
 
   if(willYouDonate<100){
+    addHeadline.setAttribute("style", "color:white");
     addHeadline.innerHTML = "Thank you for your donation of $" + willYouDonate;
+    noRedHeadline();
   }else if(willYouDonate>=100){
     addHeadline.setAttribute("style", "color:red");
     addHeadline.innerHTML = "Thank you for your generous donation!";
+    redHeadline();
   }else{
+    addHeadline.setAttribute("style", "color:white");
     addHeadline.innerHTML = "Type a number!";
+    noRedHeadline();
   }
 });
 
