@@ -22,10 +22,22 @@ var churchillSpeech = {
 
 var consoleDisplay = document.getElementById('ConsoleDisplay');
 var addBreak = document.createElement('br');
-
+var sideNav = document.getElementById('SideNav');
+var addHeadline = document.createElement('h3');
+var executeHeadline = sideNav.appendChild(addHeadline);
+var willYouDonate = "";
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
+  willYouDonate = window.prompt('How much would you like to donate?');
+
+  if(willYouDonate<100){
+    addHeadline.innerHTML = "Thank you for your donation of $" + willYouDonate;
+  }else if(willYouDonate>=100){
+    addHeadline.innerHTML = "Thank you for your generous donation!";
+  }else{
+    addHeadline.innerHTML = "Type a number!";
+  }
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
@@ -131,5 +143,3 @@ document.getElementById('BtnDemosthenes').addEventListener('click', function(){
   }
 });
 
-//This is test from click on churchill button 
-//'This speech was written by ' + speechesArray[0].author + ' in ' + speechesArray[0].year);
