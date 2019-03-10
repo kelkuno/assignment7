@@ -34,6 +34,7 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
   if(willYouDonate<100){
     addHeadline.innerHTML = "Thank you for your donation of $" + willYouDonate;
   }else if(willYouDonate>=100){
+    addHeadline.setAttribute("style", "color:red");
     addHeadline.innerHTML = "Thank you for your generous donation!";
   }else{
     addHeadline.innerHTML = "Type a number!";
